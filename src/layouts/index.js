@@ -9,11 +9,11 @@ const ListLink = props =>
         </Link>
     </li>
 
-export default ({ children }) => (
+export default ({ children, data }) => (
     <Container>
         <header style={{ marginBottom: `1.5rem` }}>
             <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-                <h3 style={{ display: `inline` }}>Testy McTestFace</h3>
+                <h3 style={{ display: `inline` }}>{data.site.siteMetadata.title}</h3>
             </Link>
             <ul style={{ listStyle: `none`, float: `right` }}>
                 <ListLink to="/">Home</ListLink>
@@ -25,3 +25,13 @@ export default ({ children }) => (
         {children()}
     </Container>
 );
+
+export const query = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
