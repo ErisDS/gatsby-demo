@@ -1,8 +1,10 @@
 import React from "react"
 import Link from "gatsby-link"
 
+import Container from "../components/container";
+
 export default () =>
-    <div style={{ margin: '3rem auto', maxWidth: 600 }}>
+    <Container>
         <h1>Richard Hamming on Luck</h1>
         <div>
             <p>
@@ -25,10 +27,9 @@ export default () =>
         <p>Posted April 09, 2011</p>
         <img src="https://source.unsplash.com/random/400x200" alt="" />
         <br />
-        <div>
-            <Link to="/page-2/">Page 2</Link>
-        </div>
-        <div>
-            <Link to="/counter/">Counter</Link>
-        </div>
-    </div>
+        <ul>
+            <li><Link to="/page-2/">Page 2</Link></li>
+            <li><Link to="/about/">About</Link></li>
+            <li><Link to="/counter/">Counter</Link></li>
+        </ul>
+    </Container>
