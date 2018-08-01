@@ -1,7 +1,5 @@
 import React from "react";
 
-import Container from "../components/container";
-
 class Counter extends React.Component {
     constructor() {
         super()
@@ -10,7 +8,7 @@ class Counter extends React.Component {
 
     render() {
         return (
-            <Container>
+            <div>
                 <h1>Counter</h1>
                 <p>current count: {this.state.count}</p>
                 <button
@@ -35,7 +33,7 @@ class Counter extends React.Component {
 
                     minus
                 </button>
-            </Container>
+            </div>
         )
     }
 }

@@ -1,8 +1,10 @@
 import React from "react";
 
+import Container from "../components/container";
+
 export default ({ children }) => (
-    <div style={{ margin: `0 auto`, maxWidth: 650, padding: `0 1rem` }}>
+    <Container>
         <h3>Testy McTestFace</h3>
         {children()}
-    </div>
+    </Container>
 );
