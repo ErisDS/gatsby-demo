@@ -1,3 +1,7 @@
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
     siteMetadata: {
         title: "Gatsby Demos"
@@ -8,6 +12,13 @@ module.exports = {
             options: {
                 name: `src`,
                 path: `${__dirname}/src/`,
+            },
+        },
+        {
+            resolve: `gatsby-source-contentful`,
+            options: {
+                spaceId: `${process.env.CTF_SPACE_ID}`,
+                accessToken: `${process.env.CTF_ACCESS_TOKEN}`,
             },
         },
         {
