@@ -1,8 +1,6 @@
 import Typography from "typography";
-
-//const typography = new Typography({ baseFontSize: "16px" });
-import theme from "typography-theme-funston";
-
+import theme from "typography-theme-fairy-gates";
+theme.baseFontSize = '16px';
 const typography = new Typography(theme);
 
 export default typography;

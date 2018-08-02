@@ -8294,9 +8294,9 @@ typography-normalize@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.14.0.tgz#1d77c1fe2aaf4a51b3673c4c85c85a65a2d4b573"
 
-typography-theme-funston@^0.15.10:
-  version "0.15.10"
-  resolved "https://registry.yarnpkg.com/typography-theme-funston/-/typography-theme-funston-0.15.10.tgz#bfdfc336090e6333bbfdb381b149e9ccab0d9645"
+typography-theme-fairy-gates@^0.15.11:
+  version "0.15.11"
+  resolved "https://registry.yarnpkg.com/typography-theme-fairy-gates/-/typography-theme-fairy-gates-0.15.11.tgz#305ec02548e4065ab6ba9c7b47ff5099b6f9be5c"
   dependencies:
     gray-percentage "^2.0.0"
     typography-breakpoint-constants "^0.15.10"

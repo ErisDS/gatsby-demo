@@ -13,6 +13,6 @@
     "gatsby-plugin-typography": "^1.7.19",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
-    "typography-theme-funston": "^0.15.10"
+    "typography-theme-fairy-gates": "^0.15.11"
   }
 }

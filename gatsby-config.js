@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: "Testy McTestface"
+        title: "Gatsby Demos"
     },
     plugins: [
         {
@@ -10,7 +10,6 @@ module.exports = {
                 path: `${__dirname}/src/`,
             },
         },
-        `gatsby-transformer-remark`,
         {
             resolve: `gatsby-plugin-typography`,
             options: {
