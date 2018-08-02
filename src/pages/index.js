@@ -1,6 +1,8 @@
 import React from "react";
 
-export default () => (
+export default ({ data }) => {
+    console.log(data);
+    return (
     <div>
         <h1>Richard Hamming on Luck</h1>
         <div>
@@ -21,7 +23,39 @@ export default () => (
                 </p>
             </blockquote>
         </div>
-        <p>Posted April 09, 2011</p>
         <img src="https://source.unsplash.com/random/400x200" alt="" />
+
+        <div>
+            <h1>Markdown stuff</h1>
+            <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+            {data.allMarkdownRemark.edges.map(({ node }) => (
+                <div key={node.id}>
+                    <h3>
+                        {node.frontmatter.title}{" "}
+                        <span style={{ color: '#bbb' }}>{node.frontmatter.date}</span>
+                    </h3>
+                    <p>{node.excerpt}</p>
+                </div>
+            ))}
+        </div>
     </div>
-);
+    );
+};
+
+export const query = graphql`
+  query IndexQuery {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`;
