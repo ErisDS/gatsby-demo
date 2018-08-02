@@ -23,7 +23,7 @@ export default ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query CTFPostsQuery {
     allContentfulArticle(filter: { node_locale: { eq: "en-US" } }, sort: { order: DESC, fields: [publishedAt] }) {
       edges {
         node {

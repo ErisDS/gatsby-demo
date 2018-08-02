@@ -17,6 +17,7 @@ export default ({ children, data }) => {
             </Link>
             <ul style={{listStyle: `none`, float: `right`}}>
                 <ListLink to="/contentful/">Contentful</ListLink>
+                <ListLink to="/ghost/">Ghost</ListLink>
             </ul>
         </header>
         <div>

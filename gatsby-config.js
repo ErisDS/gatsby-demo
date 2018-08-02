@@ -1,4 +1,6 @@
-require("dotenv").config({
+let activeEnv = process.env.NODE_ENV || 'development';
+
+require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 });
 
@@ -13,6 +15,14 @@ module.exports = {
                 name: `src`,
                 path: `${__dirname}/src/`,
             },
+        },
+        {
+            resolve: `gatsby-source-ghost`,
+            options: {
+                adminUrl: `newblog.ghost.io`,
+                clientId: `ghost-frontend`,
+                clientSecret: `${process.env.GH_CLIENT_SECRET}`
+            }
         },
         {
             resolve: `gatsby-source-contentful`,

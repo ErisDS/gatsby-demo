@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-source-ghost",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Hannah Wolfe",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby-node-helpers": "^0.3.0",
+    "node-fetch": "^2.2.0",
+    "query-string": "^6.1.0"
+  }
+}
