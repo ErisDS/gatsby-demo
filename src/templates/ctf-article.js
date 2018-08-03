@@ -1,15 +1,16 @@
 import React from "react";
 import Link from "gatsby-link";
+import Container from '../components/Container';
 
 export default ({data}) => {
     const post = data.contentfulArticle;
     console.log(post);
     return (
-        <div>
+        <Container>
             <Link to="/contentful/">&lt; Home</Link>
             <h1>{post.title}</h1>
             <pre>{post.body.body}</pre>
-        </div>
+        </Container>
     );
 };
 

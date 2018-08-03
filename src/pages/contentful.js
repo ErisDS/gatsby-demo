@@ -1,24 +1,22 @@
-import React from "react";
-import Link from "gatsby-link";
+import React from 'react';
+import Link from 'gatsby-link';
+import styled from 'styled-components';
+
+import Container from '../components/Container';
+import PostCard from '../components/PostCard';
 
 export default ({ data }) => {
     const posts = data.allContentfulArticle.edges;
     return (
-        <div>
-            <h1>Gatsby Contentful Demo</h1>
+        <Container>
+            <header>
+                <h1>Gatsby + Contentful Demo</h1>
+                <p>Hosted on Netlify, this demo shows Gatsby pulling from a dummy Contentful blog-like structure that I setup.</p>
+            </header>
             {posts.map(({ node }) => (
-                <div key={node.id}>
-                    <Link to={node.slug}>
-                        <h3>{node.title}</h3>
-                    </Link>
-                    <p>Tagged with: {node.tags.map(tag => (
-                        <span key={tag.id} style={{marginLeft: `0.5rem`}}>{tag.name}</span>
-                    ))}
-                    </p>
-                    <p>Posted on {node.publishedAt}</p>
-                </div>
+                <PostCard key={node.id} post={node} />
             ))}
-        </div>
+        </Container>
     );
 };
 

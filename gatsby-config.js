@@ -6,7 +6,7 @@ require('dotenv').config({
 
 module.exports = {
     siteMetadata: {
-        title: "Gatsby Demos"
+        title: "Futureweb Demos"
     },
     plugins: [
         {
@@ -31,11 +31,6 @@ module.exports = {
                 accessToken: `${process.env.CTF_ACCESS_TOKEN}`,
             },
         },
-        {
-            resolve: `gatsby-plugin-typography`,
-            options: {
-                pathToConfigModule: `src/utils/typography.js`,
-            },
-        },
+        `gatsby-plugin-styled-components`
     ]
 };

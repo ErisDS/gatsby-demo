@@ -1,28 +1,24 @@
-import React from "react";
-import Link from "gatsby-link";
+import React from 'react';
+import Link from 'gatsby-link';
 
-const ListLink = props =>
-    <li style={{ display: `inline-block`, marginRight: `0.5rem` }}>
-        <Link to={props.to}>
-            {props.children}
-        </Link>
-    </li>
+import '../styles/global';
+
+import HeaderBar from '../components/HeaderBar';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+`
 
 export default ({ children, data }) => {
     return (
     <div>
-        <header style={{marginBottom: `1.5rem`, marginLeft: `0.5rem`}}>
-            <Link to="/">
-                <h3 style={{display: `inline`}}>{data.site.siteMetadata.title}</h3>
-            </Link>
-            <ul style={{listStyle: `none`, float: `right`}}>
-                <ListLink to="/contentful/">Contentful</ListLink>
-                <ListLink to="/ghost/">Ghost</ListLink>
-            </ul>
-        </header>
-        <div>
+        <HeaderBar title={data.site.siteMetadata.title} />
+        <Wrapper>
             {children()}
-        </div>
+        </Wrapper>
     </div>
     );
 };
