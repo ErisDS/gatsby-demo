@@ -2,29 +2,35 @@ const fetch = require('node-fetch');
 const queryString = require('query-string');
 
 module.exports.fetchAllPosts = async (options) => {
-    const baseApiUrl = `https://${options.adminUrl}/ghost/api/v0.1`;
-
-    if(!options.clientId || !options.clientSecret) {
-        console.error('gatsby-source-ghost requires a clientId and clientSecret');
+    if(!options.clientId || !options.clientSecret || !options.adminUrl) {
+        console.error('Plugin Configuration Missing: gatsby-source-ghost requires your adminUrl, clientId and clientSecret');
         return;
     }
 
-    const baseApiOptions = {
+    const baseApiUrl = `https://${options.adminUrl}/ghost/api/v0.1`;
+    const postApiOptions = {
         client_id: options.clientId,
         client_secret: options.clientSecret,
+        include: 'authors,tags',
         limit: 'all'
     };
+    const postsApiUrl = `${baseApiUrl}/posts/?${queryString.stringify(postApiOptions)}`;
 
-    let response, json;
+    return fetch(postsApiUrl)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
 
-    try {
-        response = await fetch(`${baseApiUrl}/posts/?${queryString.stringify(baseApiOptions)}`);
-        json = await response.json();
-    } catch (e) {
-        // @TODO: better error handling
-        console.error('gatsby-source-ghost error on fetch', err);
-        json = {posts: []};
-    }
-
-    return json.posts;
+           console.error('\nUnable to fetch data from your Ghost API. Perhaps your credentials or adminUrl are incorrect?');
+           return res.json().then(err => {
+               console.error('\nHTTP Error:', err);
+               process.exit(1);
+           });
+        })
+        .then(data => data.posts)
+        .catch(err => {
+            console.error('\nUnable to fetch data from your Ghost API. \nNetwork Error:', err);
+            process.exit(1);
+        });
 };
