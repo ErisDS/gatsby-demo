@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 
+import AuthorList from './AuthorList';
+
 const Card = styled.article`
     flex: 1 1 300px;
     -ms-flex-direction: column;
@@ -67,21 +69,9 @@ const PrimaryTag = styled.span`
 const Footer = styled.footer`
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
     justify-content: space-between;
-    -ms-flex-align: end;
     align-items: flex-end;
     padding: 0 25px 25px;
-`
-
-const AuthorList = styled.ul`
-    display: flex;
-    -ms-flex-wrap: wrap-reverse;
-    flex-wrap: wrap-reverse;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
 `
 
 const Date = styled.span`
@@ -95,10 +85,37 @@ const Date = styled.span`
     text-transform: uppercase;
 `
 
+const getExcerpt = (post) => {
+    if (post.custom_excerpt) {
+        return post.custom_excerpt;
+    }
+
+    if (post.excerpt) {
+        return post.excerpt;
+    }
+
+    if (post.plaintext) {
+        return post.plaintext.substring(0, 200);
+    }
+
+    if (post.body) {
+        return post.body.body.substring(0, 200);
+    }
+}
+
+const makeAuthorObject = author => {
+    return {
+        name: author,
+        slug: author.split(' ')[0].toLowerCase()
+    };
+}
+
 const PostCard = props => {
     const post = props.post;
-    const tag = post.tags ? post.tags[0].name : 'Untagged';
-    console.log(post);
+    const tag = post.primaryTag ? post.primaryTag.name : (post.tags ? post.tags[0].name : 'Untagged');
+    const excerpt = getExcerpt(post);
+    const authors = post.authors[0].name ? post.authors : post.authors.map(author => makeAuthorObject(author));
+
     return (
         <Card>
             <Content>
@@ -107,12 +124,12 @@ const PostCard = props => {
                         {tag ? <PrimaryTag>{tag}</PrimaryTag> : null}
                         <h2>{post.title}</h2>
                     </header>
-                    {post.excerpt ? <section>{post.excerpt}</section> : null}
+                    {excerpt ? <section>{excerpt}</section> : null}
                 </ContentLink>
-                <footer>
-                    <AuthorList></AuthorList>
+                <Footer>
+                    {post.authors ?<AuthorList authors={authors} /> : null}
                     <Date>{post.publishedAt}</Date>
-                </footer>
+                </Footer>
 
             </Content>
         </Card>

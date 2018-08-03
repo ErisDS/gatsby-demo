@@ -12,6 +12,7 @@ module.exports.fetchAllPosts = async (options) => {
         client_id: options.clientId,
         client_secret: options.clientSecret,
         include: 'authors,tags',
+        formats: 'plaintext,html',
         limit: 'all'
     };
     const postsApiUrl = `${baseApiUrl}/posts/?${queryString.stringify(postApiOptions)}`;

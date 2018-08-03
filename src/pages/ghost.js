@@ -45,7 +45,16 @@ export const pageQuery = graphql`
           id
           slug
           title
-          publishedAt: published_at(formatString: "DD MMMM, YYYY")
+          custom_excerpt
+          plaintext
+          publishedAt: published_at(formatString: "DD MMMM, YYYY"),
+          primaryTag: primary_tag {
+            name
+            slug
+          }
+          authors {
+            name slug
+          } 
         }
       }
     }

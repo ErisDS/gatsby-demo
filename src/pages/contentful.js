@@ -25,14 +25,14 @@ export const pageQuery = graphql`
     allContentfulArticle(filter: { node_locale: { eq: "en-US" } }, sort: { order: DESC, fields: [publishedAt] }) {
       edges {
         node {
-          id
           slug
           title
-          tags {
-               id
+          body {body}
+          tags {    
                name
                slug
             }
+          authors: author 
           publishedAt(formatString: "DD MMMM, YYYY")
         }
       }
