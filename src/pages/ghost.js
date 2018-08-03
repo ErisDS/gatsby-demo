@@ -39,7 +39,7 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
   query GhostPostsQuery {
-    allGhostPost(sort: { order: DESC, fields: [published_at] }, limit: 15) {
+    allGhostPost(sort: { order: DESC, fields: [published_at] }, limit: 50) {
       edges {
         node {
           slug
