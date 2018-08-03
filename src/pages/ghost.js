@@ -42,7 +42,6 @@ export const pageQuery = graphql`
     allGhostPost(sort: { order: DESC, fields: [published_at] }, limit: 15) {
       edges {
         node {
-          id
           slug
           title
           custom_excerpt
