@@ -3,6 +3,7 @@
   "description": "Gatsby hello world starter",
   "license": "MIT",
   "scripts": {
+    "plugins": "cd plugins/gatsby-source-ghost && yarn && cd ../",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve"
