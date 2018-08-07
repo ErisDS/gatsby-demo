@@ -32,7 +32,6 @@ module.exports = {
             },
         },
         `gatsby-plugin-styled-components`,
-        `gatsby-plugin-netlify-identity-widget`,
         `gatsby-plugin-netlify-cache`,
         `gatsby-plugin-netlify`
     ]

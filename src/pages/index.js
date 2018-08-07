@@ -5,7 +5,6 @@ export default ({ data }) => {
 
     return (
         <div style={{margin: `5rem auto`, width: `800px`}}>
-            <div data-netlify-identity-menu="true"></div>
             <img src="https://source.unsplash.com/random/800x300" alt="" />
             <p>This little mini site is hosted on Netlify and contains demos of modern web tooling. Choose a demo from below:</p>
 

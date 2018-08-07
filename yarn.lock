@@ -3684,13 +3684,6 @@ gatsby-plugin-netlify-cache@^0.1.0:
     babel-runtime "^6.26.0"
     fs-extra "^6.0.1"
 
-gatsby-plugin-netlify-identity-widget@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-identity-widget/-/gatsby-plugin-netlify-identity-widget-1.1.0.tgz#f7c9d93c8ba40c25b5a9a1c6892b887badd6f791"
-  dependencies:
-    babel-runtime "^6.26.0"
-    netlify-identity-widget "^1.4.12"
-
 gatsby-plugin-netlify@^1.0.21:
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify/-/gatsby-plugin-netlify-1.0.21.tgz#a4cd6631e2c73d73177f1ce8532f125601c8c426"
@@ -5970,7 +5963,7 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-netlify-identity-widget@^1.4.12:
+netlify-identity-widget@^1.4.14:
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/netlify-identity-widget/-/netlify-identity-widget-1.4.14.tgz#32539380b85ce98881f3cea2d59111cb031ea994"
 
