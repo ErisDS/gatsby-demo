@@ -31,6 +31,9 @@ module.exports = {
                 accessToken: `${process.env.CTF_ACCESS_TOKEN}`,
             },
         },
-        `gatsby-plugin-styled-components`
+        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-netlify-identity-widget`,
+        `gatsby-plugin-netlify-cache`,
+        `gatsby-plugin-netlify`
     ]
 };
