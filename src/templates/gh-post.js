@@ -12,7 +12,8 @@ export default ({data}) => {
     return (
         <Container>
             <Link to="/ghost/">&lt; Home</Link>
-              <header>
+            <header>
+                {post.feature_image ? <img src={post.feature_image} /> : ''}
                 <section>
                     <time datetime={post.publishedAt}>{post.publishedAt}</time>
                     {post.primaryTag ? <div><span>/</span> <Link to="/tag/">{post.primaryTag.name}</Link></div>: null }
@@ -33,9 +34,9 @@ export default ({data}) => {
 export const articleQuery = graphql`
     query PostQuery($slug: String!) {
         ghostPost(slug: { eq: $slug }) {
-          title
-          custom_excerpt
+          title       
           plaintext
+          feature_image
           html
           publishedAt: published_at(formatString: "DD MMMM, YYYY")
           primaryTag:primary_tag{

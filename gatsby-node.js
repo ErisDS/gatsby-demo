@@ -26,12 +26,26 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     component: path.resolve(`./src/templates/ctf-article.js`),
                     context: {
                         slug: node.slug,
-                    },
+                    }
                 })
             })
             resolve()
         })
     });
+
+    function createGhostPage(node, type) {
+        // @TODO use shared permalinker tool
+        const prefix = type === 'tag' ? 'tag/' : '';
+        const permalink = `/ghost/${prefix}${node.slug}/`;
+
+        createPage({
+            path: permalink,
+            component: path.resolve(`./src/templates/gh-${type}.js`),
+            context: {
+                slug: node.slug,
+            }
+        });
+    }
 
     const loadPosts = new Promise((resolve, reject) => {
         graphql(`
@@ -45,19 +59,44 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           }
         `).then(result => {
-            result.data.allGhostPost.edges.forEach(({ node }) => {
-
-                createPage({
-                    path: `/ghost/${node.slug}/`,
-                    component: path.resolve(`./src/templates/gh-post.js`),
-                    context: {
-                        slug: node.slug,
-                    },
-                })
-            })
-            resolve()
+            result.data.allGhostPost.edges.forEach(({node}) => createGhostPage(node, 'post'));
+            resolve();
         });
     });
 
-    return Promise.all([loadArticles, loadPosts]);
+    const loadPages = new Promise((resolve, reject) => {
+        graphql(`
+          {
+            allGhostPage {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `).then(result => {
+            result.data.allGhostPage.edges.forEach(({ node }) => createGhostPage(node, 'page'));
+            resolve();
+        });
+    });
+
+    const loadTags = new Promise((resolve, reject) => {
+        graphql(`
+          {
+            allGhostTag {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `).then(result => {
+            result.data.allGhostTag.edges.forEach(({ node }) => createGhostPage(node, 'tag'));
+            resolve();
+        });
+    });
+
+    return Promise.all([loadArticles, loadPosts, loadPages, loadTags]);
 };

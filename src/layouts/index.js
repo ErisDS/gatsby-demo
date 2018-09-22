@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 export default ({ children, data }) => {
     return (
     <div>
-        <HeaderBar title={data.site.siteMetadata.title} />
+        <HeaderBar title="test" />
         <Wrapper>
             {children()}
         </Wrapper>

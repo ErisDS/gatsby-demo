@@ -43,8 +43,7 @@ export const pageQuery = graphql`
       edges {
         node {
           slug
-          title
-          custom_excerpt
+          title         
           plaintext
           publishedAt: published_at(formatString: "DD MMMM, YYYY"),
           primaryTag: primary_tag {
@@ -52,7 +51,8 @@ export const pageQuery = graphql`
             slug
           }
           authors {
-            name slug
+            name 
+            slug
           } 
         }
       }

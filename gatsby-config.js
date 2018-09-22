@@ -19,7 +19,7 @@ module.exports = {
         {
             resolve: `gatsby-source-ghost`,
             options: {
-                adminUrl: `newblog.ghost.io`,
+                apiUrl: `https://newblog.ghost.io`,
                 clientId: `ghost-frontend`,
                 clientSecret: `${process.env.GH_CLIENT_SECRET}`
             }
